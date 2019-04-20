@@ -30,11 +30,18 @@ public class MainActivity extends AppCompatActivity {
         buttonTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storyTextView.setText(R.string.T3_Story);
-                buttonTop.setText(R.string.T3_Ans1);
-                buttonBottom.setText(R.string.T3_Ans2);
-                mStoryIndex++;
-                trackGame();
+                if(mStoryIndex ==1)
+                {
+                    storyTextView.setText(R.string.T3_Story);
+                    buttonTop.setText(R.string.T3_Ans1);
+                    buttonBottom.setText(R.string.T3_Ans2);
+                    mStoryIndex=2;
+                }else
+                {
+                    trackStory();
+                }
+
+
             }
         });
 
@@ -42,23 +49,26 @@ public class MainActivity extends AppCompatActivity {
         buttonBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storyTextView.setText(R.string.T2_Story);
-                buttonTop.setText(R.string.T2_Ans1);
-                buttonBottom.setText(R.string.T2_Ans2);
-                mStoryIndex++;
-                trackGame();
+                if(mStoryIndex==1)
+                {
+                    storyTextView.setText(R.string.T2_Story);
+                    buttonTop.setText(R.string.T2_Ans1);
+                    buttonBottom.setText(R.string.T2_Ans2);
+                    mStoryIndex=2;
+                }else
+                {
+                    trackStory();
+                }
 
             }
         });
 
     }
-    public void trackGame()
+    private void trackStory()
     {
-        if(mStoryIndex == 5)
-        {
-            buttonBottom.setVisibility(View.GONE);
-            buttonTop.setVisibility(View.GONE);
-        }
+        storyTextView.setText(R.string.T4_End);
+        buttonBottom.setVisibility(View.GONE);
+        buttonTop.setVisibility(View.GONE);
     }
 
 }
